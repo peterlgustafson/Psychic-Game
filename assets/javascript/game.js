@@ -34,7 +34,7 @@ document.onkeypress = function (event) {
 
     if (guesses === 0) {
         losses++;
-        guesses+9;
+        guesses+=9;
     }
 
     // if (guesses === 0) {
@@ -52,5 +52,5 @@ document.onkeypress = function (event) {
     document.getElementById("wins").innerHTML = "Wins: " + wins;
     document.getElementById("losses").innerHTML = "Losses: " + losses;
     document.getElementById("guesses").innerHTML = "Guesses left: " + guesses;
-
+    document.getElementById("userGuess").innerHTML = "Your Guesses so far: " + userGuess;
 }
