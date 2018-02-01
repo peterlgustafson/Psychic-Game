@@ -20,9 +20,16 @@ var guessesLeft = 9;
 
 var computerChoice = letters[Math.floor(Math.random() * letters.length)];
 
+// Function to update random letter after win or loss (wrapping exisitng equation into a function so that it re-runs after win or loss)
+
+var updateCompChoice = function(){
+    var computerChoice = letters[Math.floor(Math.random() * letters.length)];
+          console.log(computerChoice); 
+     };
+
 // Console Log to log computer choice of random letter
 
-console.log(computerChoice);
+console.log(updateCompChoice);
 
 // Document User's Guess 
 
@@ -31,8 +38,9 @@ document.onkeypress = function (event) {
 
 // If/Else Statements
 
-    if (userGuess === computerChoice) {
+    if (userGuess === updateCompChoice) {
         wins++;
+        updateCompChoice();
     } else {
         guesses--;
     }
@@ -40,25 +48,13 @@ document.onkeypress = function (event) {
     if (guesses === 0) {
         losses++;
         guesses+=9;
+        updateCompChoice();
     }
 
-//Console Log all User Guesses
-console.log(userGuess.toString)
-
-    //Function to re-run picking random letter
-
-// var resetcomputerChoice = letters[Math.floor(Math.random() * letters.length)];
-
-// For loops through the process
-
-    // for (var i = 10; i >= guesses.length; i--) {
-    //     console.log(guesses[i]);
-    // }
-    
 //Push to innerHTML markup
 
     document.getElementById("wins").innerHTML = "Wins: " + wins;
     document.getElementById("losses").innerHTML = "Losses: " + losses;
     document.getElementById("guessesLeft").innerHTML = "Guesses left: " + guesses;
-    document.getElementById("userGuess").innerHTML = "Your Guesses so far: " + userGuess;
+    document.getElementById("userGuess").innerHTML += userGuess + ", ";
 }
