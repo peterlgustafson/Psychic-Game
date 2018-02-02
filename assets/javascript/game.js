@@ -27,9 +27,12 @@ var updateCompChoice = function(){
           console.log(computerChoice); 
      };
 
-// Console Log to log computer choice of random letter
+// // Console Log to log computer choice of random letter
 
-console.log(updateCompChoice);
+// console.log(updateCompChoice);
+
+//Run Function to Generate Random Letter
+updateCompChoice();
 
 // Document User's Guess 
 
@@ -38,7 +41,7 @@ document.onkeypress = function (event) {
 
 // If/Else Statements
 
-    if (userGuess === updateCompChoice) {
+    if (userGuess === computerChoice) {
         wins++;
         updateCompChoice();
     } else {
@@ -56,5 +59,5 @@ document.onkeypress = function (event) {
     document.getElementById("wins").innerHTML = "Wins: " + wins;
     document.getElementById("losses").innerHTML = "Losses: " + losses;
     document.getElementById("guessesLeft").innerHTML = "Guesses left: " + guesses;
-    document.getElementById("userGuess").innerHTML += userGuess + ", ";
+    document.getElementById("userGuess").innerHTML += userGuess + ",";
 }
