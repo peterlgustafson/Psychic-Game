@@ -60,7 +60,7 @@ document.onkeypress = function (event) {
     document.getElementById("wins").innerHTML = "Wins: " + wins;
     document.getElementById("losses").innerHTML = "Losses: " + losses;
     document.getElementById("guessesLeft").innerHTML = "Guesses left: " + guesses;
-    document.getElementById("userGuess").innerHTML += userGuess + ",";
+    document.getElementById("userGuess").innerHTML += userGuess + ", ";
 }
 
 //Run Function to Generate Random Letter
