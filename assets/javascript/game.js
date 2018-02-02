@@ -31,9 +31,6 @@ var updateCompChoice = function(){
 
 // console.log(updateCompChoice);
 
-//Run Function to Generate Random Letter
-updateCompChoice();
-
 // Document User's Guess 
 
 document.onkeypress = function (event) {
@@ -61,3 +58,6 @@ document.onkeypress = function (event) {
     document.getElementById("guessesLeft").innerHTML = "Guesses left: " + guesses;
     document.getElementById("userGuess").innerHTML += userGuess + ",";
 }
+
+//Run Functsion to Generate Random Letter
+updateCompChoice();
