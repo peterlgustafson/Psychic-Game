@@ -11,19 +11,20 @@ var userGuess = ["Guess 1", "Guess 2", "Guess 3", "Guess 4", "Guess 5", "Guess 6
 var wins = 0;
 var losses = 0;
 
-// Variable to count the number of total guesses and guesses remaining
+// Variable to count the number of total guesses and guesses remaining. Also creating a variable to create a string to log all guesses.
 
 var guesses = 10;
 var guessesLeft = 9;
+var allGuesses = "";
 
-// Function to Pick Random Letter
+// Create variable to use in updateCompChoice function to Pick Random Letter
 
-var computerChoice = letters[Math.floor(Math.random() * letters.length)];
+var computerChoice; 
 
 // Function to update random letter after win or loss (wrapping exisitng equation into a function so that it re-runs after win or loss)
 
 var updateCompChoice = function () {
-    var computerChoice = letters[Math.floor(Math.random() * letters.length)];
+    computerChoice = letters[Math.floor(Math.random() * letters.length)];
     console.log(computerChoice);
 };
 
@@ -33,35 +34,47 @@ var clear = function () {
     document.getElementById("userGuess").innerHTML = "Your guesses so far: " + "";
 };
 
-// Document User's Guess 
+//Run Function to Generate Random Letter
+updateCompChoice();
 
+// Document User's Guess 
 document.onkeypress = function (event) {
     var userGuess = event.key;
 
+    // Console log to check Computer & User Guess
+    console.log(computerChoice + " " + userGuess);
+
     // If/Else Statements
 
-    if (userGuess === computerChoice) {
-        wins++;
-        updateCompChoice();
-        clear();
+    if (allGuesses.indexOf(userGuess) >= 0) {
+        //To alert user that they pressed a duplicate key
+        alert("Try Again! You've already guessed that letter.");
     } else {
-        guesses--;
+        allGuesses = allGuesses + userGuess + ", ";
+
+        if (userGuess === computerChoice) {
+            wins++;
+            allGuesses = "";
+            updateCompChoice();
+            clear();
+        } else {
+            guesses--;
+        }
+
+        if (guesses === 0) {
+            losses++;
+            allGuesses = "";
+            guesses += 9;
+            updateCompChoice();
+            clear();
+        }
+
+        //Push to innerHTML markup
+
+        document.getElementById("wins").innerHTML = "Wins: " + wins;
+        document.getElementById("losses").innerHTML = "Losses: " + losses;
+        document.getElementById("guessesLeft").innerHTML = "Guesses left: " + guesses;
+        document.getElementById("userGuess").innerHTML = "Your guesses so far: " + allGuesses;
     }
-
-    if (guesses === 0) {
-        losses++;
-        guesses += 9;
-        updateCompChoice();
-        clear();
-    }
-
-    //Push to innerHTML markup
-
-    document.getElementById("wins").innerHTML = "Wins: " + wins;
-    document.getElementById("losses").innerHTML = "Losses: " + losses;
-    document.getElementById("guessesLeft").innerHTML = "Guesses left: " + guesses;
-    document.getElementById("userGuess").innerHTML += userGuess + ", ";
 }
 
-//Run Function to Generate Random Letter
-updateCompChoice();
