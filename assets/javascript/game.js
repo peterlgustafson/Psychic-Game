@@ -30,7 +30,7 @@ var updateCompChoice = function(){
 // Function to clear user guess html after a win or loss 
 
 var clear = function(){
-    document.getElementById("userGuess").innerHTML = "Your guesses so far:" + "";
+    document.getElementById("userGuess").innerHTML = "Your guesses so far: " + "";
     };
 
 // Document User's Guess 
