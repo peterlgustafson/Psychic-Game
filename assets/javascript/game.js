@@ -27,9 +27,11 @@ var updateCompChoice = function(){
           console.log(computerChoice); 
      };
 
-// // Console Log to log computer choice of random letter
+// Function to clear user guess html after a win or loss 
 
-// console.log(updateCompChoice);
+var clear = function(){
+    document.getElementById("userGuess").innerHTML = "Your guesses so far:" + "";
+    };
 
 // Document User's Guess 
 
@@ -41,6 +43,7 @@ document.onkeypress = function (event) {
     if (userGuess === computerChoice) {
         wins++;
         updateCompChoice();
+        clear();
     } else {
         guesses--;
     }
@@ -49,6 +52,7 @@ document.onkeypress = function (event) {
         losses++;
         guesses+=9;
         updateCompChoice();
+        clear();
     }
 
 //Push to innerHTML markup
@@ -59,5 +63,5 @@ document.onkeypress = function (event) {
     document.getElementById("userGuess").innerHTML += userGuess + ",";
 }
 
-//Run Functsion to Generate Random Letter
+//Run Function to Generate Random Letter
 updateCompChoice();
